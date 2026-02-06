@@ -1,0 +1,183 @@
+/* =================================================
+   GLOBAL THEME — SINGLE SOURCE OF TRUTH
+   Matches HOME PAGE COLORS ACROSS ENTIRE WEBSITE
+================================================= */
+
+:root {
+  /* ===== BRAND COLORS (HOME PAGE) ===== */
+  --brand-blue: #5b5bff;
+  --brand-blue-soft: #6a6aff;
+  --brand-purple: #7b6cff;
+
+  --brand-orange: #ff9f43;
+  --brand-orange-deep: #ff7a18;
+
+  /* ===== BASE BACKGROUNDS ===== */
+  --bg-dark: #0e1024;
+  --bg-dark-soft: #14163a;
+  --bg-light: #f5f7fb;
+  --bg-white: #ffffff;
+
+  /* ===== GRADIENTS ===== */
+  /* HOME PAGE HERO */
+  --gradient-home: radial-gradient(
+      circle at 20% 30%,
+      rgba(91, 91, 255, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 40%,
+      rgba(123, 108, 255, 0.35),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #0e1024 0%, #14163a 100%);
+
+  /* BRAND GRADIENT (CONTACT / HISTORY / HERO PAGES) */
+  --gradient-brand: linear-gradient(
+    180deg,
+    #5b5bff 0%,
+    #6a6aff 18%,
+    #ff9f43 45%,
+    #f5f7fb 85%
+  );
+
+  /* BUTTON GRADIENT */
+  --gradient-orange: linear-gradient(
+    135deg,
+    #ff9f43,
+    #ff7a18
+  );
+
+  /* ===== TEXT ===== */
+  --text-dark: #0e1024;
+  --text-muted: #6b7280;
+  --text-light: #ffffff;
+
+  /* ===== SHADOWS ===== */
+  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 20px 45px rgba(0, 0, 0, 0.12);
+
+  /* ===== RADIUS ===== */
+  --radius-lg: 18px;
+  --radius-md: 14px;
+}
+
+/* =================================================
+   GLOBAL PAGE TYPES
+================================================= */
+
+/* GRADIENT PAGES (Home, Contact, History) */
+.page-gradient {
+  min-height: 100vh;
+  background: var(--gradient-brand);
+}
+
+/* SOLID PAGES (Dashboard, Roadmap, Progress) */
+.page-solid {
+  min-height: 100vh;
+  background: var(--bg-light);
+}
+
+/* =================================================
+   NAVBAR — MATCHES HOME PAGE
+================================================= */
+
+.navbar,
+header {
+  background: linear-gradient(
+    90deg,
+    var(--brand-blue),
+    var(--brand-purple)
+  );
+  color: var(--text-light);
+}
+
+/* =================================================
+   HEADINGS
+================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-dark);
+}
+
+.page-gradient h1,
+.page-gradient h2,
+.page-gradient h3 {
+  color: var(--text-light);
+}
+
+/* =================================================
+   CARDS / BOXES (USED EVERYWHERE)
+================================================= */
+
+.card,
+.panel,
+.box,
+.history-card,
+.contact-box,
+.progress-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* =================================================
+   BUTTONS
+================================================= */
+
+.btn-primary,
+button.primary {
+  background: var(--gradient-orange);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover,
+button.primary:hover {
+  opacity: 0.95;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--brand-blue);
+  color: var(--brand-blue);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-weight: 600;
+}
+
+/* =================================================
+   FORMS
+================================================= */
+
+input,
+textarea {
+  border-radius: var(--radius-md);
+  border: 1px solid #ddd;
+  padding: 14px;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--brand-orange);
+}
+
+/* =================================================
+   FOOTER TEXT / HELP TEXT
+================================================= */
+
+.footer-text,
+.helper-text {
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+}

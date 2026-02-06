@@ -1,0 +1,284 @@
+/* ===============================
+   PAGE BACKGROUND
+   =============================== */
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(99,102,241,0.45), transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(139,92,246,0.45), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(56,189,248,0.25), transparent 45%),
+    linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* ===============================
+   LEFT PANEL
+   =============================== */
+.register-left {
+  flex: 1;
+  padding: 100px 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+}
+
+/* SOFT OVERLAY */
+.register-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15,23,42,0.65),
+    rgba(15,23,42,0.25),
+    transparent
+  );
+  z-index: -1;
+}
+
+/* LEFT TEXT */
+.register-left h1 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.register-left p {
+  margin-top: 18px;
+  font-size: 18px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* FEATURE TAGS */
+.register-features {
+  margin-top: 40px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.register-features span {
+  background: rgba(255,255,255,0.22);
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: #ffffff;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* ===============================
+   RIGHT PANEL
+   =============================== */
+.register-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 80px;
+}
+
+/* ===============================
+   REGISTER CARD (LARGE)
+   =============================== */
+.register-card {
+  position: relative;
+  z-index: 2;
+  width: 560px;                  /* ⬅ EXTRA LARGE */
+  background: #ffffff;
+  padding: 70px;                 /* ⬅ MORE SPACE */
+  border-radius: 28px;
+  box-shadow:
+    0 55px 110px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(255,255,255,0.2);
+  animation: slideFadeIn 0.8s ease-out;
+}
+
+/* ENTRY ANIMATION */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   STEP INDICATOR
+   =============================== */
+.register-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.step {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #64748b;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.line {
+  width: 50px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 4px;
+}
+
+/* ===============================
+   CARD TEXT
+   =============================== */
+.register-card h2 {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.register-card p {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 36px;
+  color: #64748b;
+}
+
+/* ===============================
+   INPUTS (LARGER)
+   =============================== */
+.register-card input {
+  width: 100%;
+  padding: 20px 22px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  font-size: 17px;
+  transition: all 0.25s ease;
+}
+
+.register-card input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.25);
+  outline: none;
+}
+
+/* ===============================
+   PASSWORD STRENGTH
+   =============================== */
+.password-strength {
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+
+.strength-bar {
+  height: 7px;
+  width: 100%;
+  border-radius: 7px;
+  background: #e5e7eb;
+  overflow: hidden;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.strength-bar::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.level-1::after { width: 33%; background: #ef4444; }
+.level-2::after { width: 66%; background: #f59e0b; }
+.level-3::after { width: 100%; background: #22c55e; }
+
+.strength-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.strength-text.level-1 { color: #ef4444; }
+.strength-text.level-2 { color: #f59e0b; }
+.strength-text.level-3 { color: #22c55e; }
+
+/* ===============================
+   BUTTONS (BIG CTA)
+   =============================== */
+.register-card button,
+.next-btn {
+  width: 100%;
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.register-card button:hover,
+.next-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(79,70,229,0.5);
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+.register-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 15px;
+  color: #475569;
+}
+
+.register-footer span {
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===============================
+   MOBILE
+   =============================== */
+@media (max-width: 900px) {
+  .register-left {
+    display: none;
+  }
+
+  .register-right {
+    padding: 0 20px;
+  }
+
+  .register-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+  }
+}

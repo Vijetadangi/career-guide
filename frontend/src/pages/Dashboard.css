@@ -1,0 +1,161 @@
+/* ================= PAGE ================= */
+.dashboard-page {
+  min-height: 100vh;
+  position: relative;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(99,102,241,0.20), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(34,211,238,0.18), transparent 40%),
+    linear-gradient(to bottom, #ffffff, #eef7ff);
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+
+/* ================= DECORATIVE LAYERS ================= */
+.dashboard-ambient,
+.dashboard-shimmer,
+.dashboard-streak,
+.dashboard-nodes,
+.dashboard-accent-right,
+.dashboard-bright-overlay,
+.dashboard-page::before,
+.dashboard-page::after {
+  pointer-events: none;
+}
+
+/* ================= NAVBAR ================= */
+.dashboard-navbar {
+  height: 64px;
+  padding: 0 32px;
+  background: linear-gradient(90deg, #2f5bea, #4f8cff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  position: relative;
+  z-index: 10;
+}
+
+/* ================= CONTAINER ================= */
+.dashboard-container {
+  max-width: 1400px;
+  width: calc(100% - 160px);
+  margin: 40px auto 0;
+  padding: 36px;
+  position: relative;
+  z-index: 20;
+}
+
+/* ================= LEVEL SECTION ================= */
+.level-section {
+  margin-bottom: 48px;
+}
+
+.level-bar {
+  background: linear-gradient(90deg, #2f5bea, #4f8cff);
+  padding: 10px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.level-desc {
+  margin: 12px 0 22px;
+  color: #4b5563;
+  max-width: 520px;
+}
+
+/* ================= CARD GRID ================= */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+/* ================= DASHBOARD CARD (SINGLE SOURCE OF TRUTH) ================= */
+.dashboard-card {
+  background: linear-gradient(160deg, #1f2a48, #2f3e6f);
+  border-radius: 18px;
+  padding: 30px;
+  min-height: 240px;
+  color: white;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 30;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.35);
+}
+
+/* ================= CARD CONTENT ================= */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-icon {
+  font-size: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px;
+  border-radius: 14px;
+}
+
+/* ✅ FIX: HEADINGS ALWAYS VISIBLE */
+.dashboard-card h3,
+.dashboard-card h4 {
+  color: #ffffff;
+  margin: 16px 0 6px;
+  font-weight: 600;
+}
+
+/* TEXT */
+.dashboard-card p {
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* ================= BADGE ================= */
+.badge {
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+  color: #2a1d00;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+/* ================= BUTTON ================= */
+.card-btn {
+  margin-top: 18px;
+  padding: 11px 20px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #4f8cff, #2f5bea);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(79,70,229,0.5);
+}
+
+/* ================= CLICK SAFETY ================= */
+.dashboard-card,
+.card-btn,
+.primary-btn {
+  pointer-events: auto;
+  position: relative;
+  z-index: 40;
+}

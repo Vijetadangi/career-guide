@@ -1,0 +1,262 @@
+/* ================= PAGE ================= */
+.resume-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(79,70,229,0.12), transparent 45%),
+    radial-gradient(circle at 90% 30%, rgba(59,130,246,0.12), transparent 45%),
+    #f5f7fb;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔒 CRITICAL FIX: background must NEVER block clicks */
+.resume-page::before,
+.resume-page::after {
+  pointer-events: none;
+}
+
+/* ================= CONTAINER ================= */
+.resume-container {
+  max-width: 1300px;
+  margin: auto;
+  position: relative;
+  z-index: 5; /* 🔥 REQUIRED */
+}
+
+/* ================= HERO ================= */
+.resume-hero {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.hero-left h1 {
+  font-size: 36px;
+}
+
+.hero-left p {
+  color: #4b5563;
+  max-width: 520px;
+}
+
+.hero-points span {
+  margin-right: 16px;
+  font-weight: 600;
+}
+
+/* ================= SCORE CARD ================= */
+.resume-score-card {
+  background: linear-gradient(135deg, #4f8cff, #2f5bea);
+  color: white;
+  padding: 32px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(79,70,229,0.35);
+  position: relative;
+  z-index: 10;
+}
+
+.score-circle {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.score-circle span {
+  font-size: 14px;
+}
+
+/* ================= MAIN GRID ================= */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 260px minmax(520px, 1fr) 340px;
+  gap: 36px;
+  align-items: start;
+}
+
+/* ================= SIDEBAR ================= */
+.resume-sidebar {
+  background: white;
+  padding: 26px;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 10;
+}
+
+.resume-sidebar ul li {
+  margin-bottom: 12px;
+}
+
+/* ================= EDITOR ================= */
+.resume-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  z-index: 10;
+}
+
+.editor-card {
+  background: white;
+  padding: 32px;
+  border-radius: 22px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 10;
+}
+
+.editor-card.large {
+  min-height: 360px;
+  border: 1px solid #e0e7ff;
+}
+
+/* ================= SKILLS ================= */
+.skill-tags span {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #1e3a8a;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.skill-input {
+  display: flex;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.skill-input input {
+  flex: 1;
+  padding: 10px;
+}
+
+.skill-input button {
+  padding: 10px 18px;
+  position: relative;
+  z-index: 20;
+}
+
+/* ================= AI BOX ================= */
+.ai-box {
+  margin-top: 20px;
+  padding: 18px;
+  background: #f3f6ff;
+  border-radius: 14px;
+}
+
+.ai-tags button {
+  margin-right: 8px;
+  margin-top: 8px;
+  position: relative;
+  z-index: 20;
+}
+
+/* ================= RIGHT PANEL ================= */
+.resume-right {
+  position: sticky;
+  top: 100px;
+  z-index: 10;
+}
+
+.resume-preview {
+  background: white;
+  padding: 28px;
+  border-radius: 22px;
+  border-left: 4px solid #4f8cff;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+/* ================= TEMPLATES ================= */
+.resume-templates-section {
+  margin-top: 80px;
+  padding: 48px;
+  background: linear-gradient(180deg, #ffffff, #f3f6ff);
+  border-radius: 26px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.template-row {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.template-card.large {
+  height: 320px;
+  background: linear-gradient(180deg, #e0e7ff, #ffffff);
+  border-radius: 18px;
+  padding: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 20; /* 🔥 clickable */
+}
+
+.template-card.large:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(79,70,229,0.25);
+}
+
+.template-card.large.active {
+  outline: 3px solid #4f8cff;
+}
+
+.template-preview {
+  height: 220px;
+  background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.template-card.large button {
+  position: relative;
+  z-index: 30;
+}
+
+/* ================= BUTTONS ================= */
+button {
+  cursor: pointer;
+  pointer-events: auto; /* 🔥 */
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #4f8cff, #2f5bea);
+  color: white;
+  border-radius: 12px;
+  border: none;
+}
+
+.link-btn {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #4f8cff;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
