@@ -6,7 +6,7 @@ const History = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/history", {
+    fetch("https://career-guide-backend-tdg.onrender.com/api/history", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(res => res.json())
@@ -15,15 +15,18 @@ const History = () => {
   }, [token]);
 
   const deleteItem = async (id) => {
-    await fetch(`http://localhost:4000/api/history/${id}`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await fetch(
+      `https://career-guide-backend-tdg.onrender.com/api/history/${id}`,
+      {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     setHistoryData(prev => prev.filter(item => item._id !== id));
   };
 
   const clearAll = async () => {
-    await fetch("http://localhost:4000/api/history", {
+    await fetch("https://career-guide-backend-tdg.onrender.com/api/history", {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

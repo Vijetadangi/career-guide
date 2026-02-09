@@ -21,13 +21,16 @@ const Contact = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        "https://career-guide-backend-tdg.onrender.com/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
       const data = await res.json();
 
@@ -47,7 +50,6 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-
       {/* HERO */}
       <div className="contact-hero">
         <h1>Contact Us</h1>
@@ -56,7 +58,6 @@ const Contact = () => {
 
       {/* CONTENT */}
       <div className="contact-container">
-
         {/* LEFT */}
         <div className="contact-info">
           <h2>Get in touch</h2>
@@ -120,13 +121,11 @@ const Contact = () => {
 
           <button type="submit">Send Message</button>
         </form>
-
       </div>
 
       <div className="contact-footer">
         🤝 We’re here to support your career journey — every step of the way.
       </div>
-
     </div>
   );
 };

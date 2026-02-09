@@ -38,7 +38,7 @@ const ResumeBuilder = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       saveResume(true);
-    }, 10000); // ⏱️ 10s debounce (prevents 413)
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, [
@@ -64,25 +64,28 @@ const ResumeBuilder = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/api/resumes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          name,
-          role,
-          email,
-          phone,
-          skills,
-          projects,
-          education,
-          certificates,
-          template,
-          atsScore,
-        }),
-      });
+      const res = await fetch(
+        "https://career-guide-backend-tdg.onrender.com/api/resumes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            name,
+            role,
+            email,
+            phone,
+            skills,
+            projects,
+            education,
+            certificates,
+            template,
+            atsScore,
+          }),
+        }
+      );
 
       if (!res.ok) {
         const err = await res.json();
@@ -137,7 +140,6 @@ const ResumeBuilder = () => {
           </div>
 
           <div className="actions">
-            
             <button onClick={downloadPDF}>📄 Download PDF</button>
           </div>
         </div>

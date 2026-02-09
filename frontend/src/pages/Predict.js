@@ -43,18 +43,21 @@ const Predict = () => {
       const primaryCareer = careerMap[strongestSkill] || careerMap.Logic;
 
       try {
-        await fetch("http://localhost:4000/api/history", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            role: primaryCareer.role,
-            confidence: primaryCareer.match,
-            skills: Object.keys(categoryScore),
-          }),
-        });
+        await fetch(
+          "https://career-guide-backend-tdg.onrender.com/api/history",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              role: primaryCareer.role,
+              confidence: primaryCareer.match,
+              skills: Object.keys(categoryScore),
+            }),
+          }
+        );
 
         sessionStorage.setItem("historySaved", "true");
       } catch (err) {
@@ -111,7 +114,6 @@ const Predict = () => {
 
   return (
     <div className="predict-page">
-      {/* ✅ CENTERED TITLE + SUBTITLE */}
       <div className="predict-header">
         <h1>🎯 Career Prediction Results</h1>
         <p className="subtitle">
@@ -119,7 +121,6 @@ const Predict = () => {
         </p>
       </div>
 
-      {/* ✅ TOP BLUE CARD (VISIBLE CONTENT) */}
       <div className="main-career-card">
         <div className="left">
           <div className="career-icon">{primaryCareer.icon}</div>
