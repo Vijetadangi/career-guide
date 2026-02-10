@@ -7,21 +7,18 @@ dotenv.config();
 
 const app = express();
 
-/* ================= CORS (FIXED) ================= */
+/* ================= CORS (FIXED FOR NODE 22) ================= */
 app.use(
   cors({
     origin: [
       "https://profound-nasturtium-3fea32.netlify.app",
-      "http://localhost:3000"
+      "http://localhost:3000",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    credentials: true,
   })
 );
-
-// IMPORTANT: handle preflight
-app.options("*", cors());
 
 /* ================= BODY PARSER ================= */
 app.use(express.json({ limit: "2mb" }));
