@@ -7,21 +7,23 @@ dotenv.config();
 
 const app = express();
 
-/* ================= MIDDLEWARE ================= */
-
-// ✅ FIXED: Explicit CORS for frontend (Netlify-safe)
+/* ================= CORS (FIXED) ================= */
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
       "https://profound-nasturtium-3fea32.netlify.app",
+      "http://localhost:3000"
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
   })
 );
 
-// 🚨 BODY PARSING (already correct)
+// IMPORTANT: handle preflight
+app.options("*", cors());
+
+/* ================= BODY PARSER ================= */
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
