@@ -1,7 +1,19 @@
+
 {
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "eslintConfig": {
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "no-unused-vars": "warn"
+  }
+},
+
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",

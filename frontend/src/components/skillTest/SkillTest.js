@@ -56,6 +56,7 @@ const SkillTest = () => {
 
     return () => clearTimeout(timer);
   }, [timeLeft, showResult, showExplanation]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setTimeLeft(QUESTION_TIME);

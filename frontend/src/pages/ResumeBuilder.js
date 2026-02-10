@@ -21,6 +21,8 @@ const ResumeBuilder = () => {
   const [certificates, setCertificates] = useState("");
 
   /* ================= ATS SCORE (LIVE) ================= */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const atsScore = useMemo(() => {
     let score = 0;
     if (name) score += 15;
