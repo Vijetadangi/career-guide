@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-
+const path = require("path");
 dotenv.config();
 
 const app = express();
@@ -23,7 +23,10 @@ app.use(express.urlencoded({ limit: "2mb", extended: true }));
 connectDB();
 
 /* ================= ROUTES ================= */
-app.use("/api/auth", require("./routes/authRoutes"));
+app.use(
+  "/api/auth",
+  require(path.join(__dirname, "routes", "authRoutes"))
+);
 app.use("/api/career", require("./routes/careerRoutes"));
 app.use("/api/history", require("./routes/historyRoutes"));
 app.use("/api/resumes", require("./routes/resumeRoutes"));
