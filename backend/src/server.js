@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-/* ================= CORS (FINAL FIX) ================= */
+/* ================= CORS (NODE 22 SAFE) ================= */
 const allowedOrigins = [
   "https://profound-nasturtium-3fea32.netlify.app",
   "http://localhost:3000",
@@ -15,23 +15,20 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow server-to-server & tools like Postman
+    origin: (origin, callback) => {
+      // Allow server-side tools (Postman, curl, Render health checks)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("CORS not allowed"));
+        return callback(null, true);
       }
+
+      return callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
-// ✅ HANDLE PREFLIGHT PROPERLY (NO "*")
-app.options("/api/*", cors());
 
 /* ================= BODY PARSER ================= */
 app.use(express.json({ limit: "2mb" }));
