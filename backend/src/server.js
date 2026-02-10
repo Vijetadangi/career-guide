@@ -7,30 +7,15 @@ dotenv.config();
 
 const app = express();
 
-/* ================= CORS (NODE 22 SAFE) ================= */
-const allowedOrigins = [
-  "https://profound-nasturtium-3fea32.netlify.app",
-  "http://localhost:3000",
-];
-
+/* ================= MIDDLEWARE ================= */
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow server-side tools (Postman, curl, Render health checks)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-
-      return callback(new Error("Not allowed by CORS"));
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "https://profound-nasturtium-3fea32.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-/* ================= BODY PARSER ================= */
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
@@ -53,5 +38,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Backend running on http://localhost:${PORT}`);
+  console.log(`🚀 Backend running on port ${PORT}`);
 });
