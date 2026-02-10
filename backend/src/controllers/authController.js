@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "User registered successfully",
       token,
       user: {
@@ -41,8 +41,8 @@ exports.register = async (req, res) => {
       },
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+    console.error("REGISTER ERROR:", err); // 🔥 added clarity
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
@@ -68,7 +68,7 @@ exports.login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "Login successful",
       token,
       user: {
@@ -78,7 +78,7 @@ exports.login = async (req, res) => {
       },
     });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+    console.error("LOGIN ERROR:", err); // 🔥 added clarity
+    return res.status(500).json({ message: "Server error" });
   }
 };

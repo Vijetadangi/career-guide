@@ -8,9 +8,20 @@ dotenv.config();
 const app = express();
 
 /* ================= MIDDLEWARE ================= */
-app.use(cors());
 
-// 🚨 INCREASE BODY SIZE LIMIT (FIX 413 ERROR)
+// ✅ FIXED: Explicit CORS for frontend (Netlify-safe)
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://profound-nasturtium-3fea32.netlify.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+// 🚨 BODY PARSING (already correct)
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
