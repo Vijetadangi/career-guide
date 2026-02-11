@@ -11,21 +11,14 @@ const app = express();
 /* ================= MIDDLEWARE ================= */
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-
-      if (origin.includes("netlify.app") || origin.includes("localhost")) {
-        return callback(null, true);
-      }
-
-      callback(new Error("Not allowed by CORS"));
-    },
+    origin: [
+      "https://profound-nasturtium-3fea32.netlify.app",
+      "http://localhost:3000",
+    ],
     credentials: true,
   })
 );
 
-// 🔥 VERY IMPORTANT — Handle preflight
-app.options("*", cors());
 
 
 /* ================= DATABASE ================= */
