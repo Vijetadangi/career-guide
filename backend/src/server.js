@@ -7,17 +7,31 @@ dotenv.config();
 
 const app = express();
 
+
 /* ================= MIDDLEWARE ================= */
 app.use(
   cors({
-    origin: "https://profound-nasturtium-3fea32.netlify.app",
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman)
+      if (!origin) return callback(null, true);
+
+      // allow all netlify deploys
+      if (origin.includes("netlify.app")) {
+        return callback(null, true);
+      }
+
+      // allow localhost for development
+      if (origin.includes("localhost")) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.use(express.json({ limit: "2mb" }));
-app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
 /* ================= DATABASE ================= */
 connectDB();
