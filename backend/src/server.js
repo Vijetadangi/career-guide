@@ -11,13 +11,22 @@ const app = express();
 /* ================= MIDDLEWARE ================= */
 app.use(
   cors({
-    origin: [
-      "https://profound-nasturtium-3fea32.netlify.app",
-      "http://localhost:3000",
-    ],
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (
+        origin.includes("netlify.app") ||
+        origin.includes("localhost")
+      ) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
     credentials: true,
   })
 );
+
 
 
 
