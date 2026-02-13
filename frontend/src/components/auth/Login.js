@@ -21,12 +21,13 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-  "https://career-guide-backend-tdgq.onrender.com/api/auth/register",
+  "https://career-guide-backend-tdgq.onrender.com/api/auth/login",
   {
     email,
     password,
   }
 );
+
 
 
       console.log("LOGIN RESPONSE 👉", res.data);
