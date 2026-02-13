@@ -36,9 +36,8 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch(
-  "https://career-guide-backend-tdg.onrender.com/api/auth/register",
-  {
+      const res = await fetch("https://career-guide-backend-tdgq.onrender.com/api/auth/register", {
+
 
         method: "POST",
         headers: {

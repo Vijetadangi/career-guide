@@ -21,7 +21,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-  "https://career-guide-backend-tdg.onrender.com/api/auth/login",
+  "https://career-guide-backend-tdgq.onrender.com/api/auth/register",
   {
     email,
     password,
