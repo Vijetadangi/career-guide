@@ -34,10 +34,8 @@ app.use(
 connectDB();
 
 /* ================= ROUTES ================= */
-app.use(
-  "/api/auth",
-  require(path.join(__dirname, "routes", "authRoutes"))
-);
+app.use("/api/auth", require("./routes/authRoutes"));
+
 app.use("/api/career", require("./routes/careerRoutes"));
 app.use("/api/history", require("./routes/historyRoutes"));
 app.use("/api/resumes", require("./routes/resumeRoutes"));
