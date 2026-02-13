@@ -7,7 +7,6 @@ dotenv.config();
 
 const app = express();
 
-
 /* ================= MIDDLEWARE ================= */
 app.use(
   cors({
@@ -19,18 +18,18 @@ app.use(
     credentials: true
   })
 );
-app.options("*", cors());
 
+// ❌ REMOVE THIS LINE (it was crashing Render)
+// app.options("*", cors());
 
-
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /* ================= DATABASE ================= */
 connectDB();
 
 /* ================= ROUTES ================= */
 app.use("/api/auth", require("./routes/authRoutes"));
-
 app.use("/api/career", require("./routes/careerRoutes"));
 app.use("/api/history", require("./routes/historyRoutes"));
 app.use("/api/resumes", require("./routes/resumeRoutes"));
