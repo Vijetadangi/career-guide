@@ -10,11 +10,16 @@ const app = express();
 /* ================= MIDDLEWARE ================= */
 app.use(
   cors({
-    origin: "https://profound-nasturtium-3fea32.netlify.app",
+    origin: [
+      "http://localhost:3000",
+      "https://career-guide-teal.vercel.app"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+
 
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
