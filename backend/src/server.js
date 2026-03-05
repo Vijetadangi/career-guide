@@ -11,19 +11,19 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://profound-nasturtium-3fea32.netlify.app",
-      "https://698ed05c116ac688cc08dce7--profound-nasturtium-3fea32.netlify.app"
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://career-guide-teal.vercel.app",
+      /\.vercel\.app$/
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
   })
 );
 
-// ❌ REMOVE THIS LINE (it was crashing Render)
-// app.options("*", cors());
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "2mb" }));
+app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
 /* ================= DATABASE ================= */
 connectDB();
