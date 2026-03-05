@@ -21,18 +21,15 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-  "https://career-guide-backend-tdqg.onrender.com/api/auth/login"
-,
-  {
-    email,
-    password,
-  }
-);
-
+        "https://career-guide-backend-tdgq.onrender.com/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
 
       console.log("LOGIN RESPONSE 👉", res.data);
 
-      // ✅ Handle ALL possible backend token keys
       const token =
         res.data.token ||
         res.data.accessToken ||
@@ -46,7 +43,6 @@ const Login = () => {
 
       localStorage.setItem("token", token);
 
-      // optional but safe
       if (res.data.user) {
         localStorage.setItem("user", JSON.stringify(res.data.user));
       }
@@ -60,7 +56,6 @@ const Login = () => {
 
   return (
     <div className="auth-page">
-      {/* LEFT PANEL */}
       <div className="auth-left">
         <h1>Your career journey continues here</h1>
         <p>Track skills • Follow roadmaps • Grow confidently</p>
@@ -72,7 +67,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* RIGHT PANEL */}
       <div className="auth-right">
         <form className="auth-card" onSubmit={onSubmit}>
           <h2>Welcome Back</h2>

@@ -26,7 +26,7 @@ const Register = () => {
     setStep(2);
   };
 
-  // ✅ FIXED: REAL REGISTER
+  // ✅ REAL REGISTER
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,21 +37,19 @@ const Register = () => {
 
     try {
       const res = await fetch(
-  "https://career-guide-backend-tdqg.onrender.com/api/auth/register"
-
-,
-  {
-
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
+        "https://career-guide-backend-tdgq.onrender.com/api/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
 
       const data = await res.json();
 
@@ -60,7 +58,6 @@ const Register = () => {
         return;
       }
 
-      // 🔐 Auto-login after register
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
@@ -74,7 +71,6 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      {/* LEFT PANEL */}
       <div className="register-left">
         <h1>
           Build your career
@@ -90,10 +86,8 @@ const Register = () => {
         </div>
       </div>
 
-      {/* RIGHT FORM */}
       <div className="register-right">
         <div className="register-card">
-          {/* PROGRESS */}
           <div className="register-steps">
             <div className={`step ${step >= 1 ? "active" : ""}`}>1</div>
             <div className="line"></div>
@@ -122,11 +116,7 @@ const Register = () => {
                   required
                 />
 
-                <button
-                  type="button"
-                  className="next-btn"
-                  onClick={handleNext}
-                >
+                <button type="button" className="next-btn" onClick={handleNext}>
                   Continue →
                 </button>
               </>
