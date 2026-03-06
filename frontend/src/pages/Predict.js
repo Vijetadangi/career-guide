@@ -1,3 +1,4 @@
+import { BASE_URL } from "../utils/auth";
 import "./Predict.css";
 import SkillBarChart from "../components/SkillBarChart";
 import MatchCircle from "../components/MatchCircle";
@@ -44,7 +45,7 @@ const Predict = () => {
 
       try {
         await fetch(
-          "https://career-guide-backend-tdg.onrender.com/api/history",
+          `${BASE_URL}/api/history`,
           {
             method: "POST",
             headers: {

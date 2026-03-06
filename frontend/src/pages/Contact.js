@@ -1,3 +1,4 @@
+import { BASE_URL } from "../utils/auth";
 import "./Contact.css";
 import { useState } from "react";
 
@@ -22,7 +23,7 @@ const Contact = () => {
 
     try {
       const res = await fetch(
-        "https://career-guide-backend-tdg.onrender.com/api/contact",
+        `${BASE_URL}/api/contact`,
         {
           method: "POST",
           headers: {

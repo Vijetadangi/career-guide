@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../utils/auth";
 import "./History.css";
 
 const History = () => {
@@ -6,7 +7,7 @@ const History = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("https://career-guide-backend-tdg.onrender.com/api/history", {
+    fetch(`${BASE_URL}/api/history`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(res => res.json())
@@ -16,7 +17,7 @@ const History = () => {
 
   const deleteItem = async (id) => {
     await fetch(
-      `https://career-guide-backend-tdg.onrender.com/api/history/${id}`,
+      `${BASE_URL}/api/history/${id}`,
       {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
@@ -26,7 +27,7 @@ const History = () => {
   };
 
   const clearAll = async () => {
-    await fetch("https://career-guide-backend-tdg.onrender.com/api/history", {
+    await fetch(`${BASE_URL}/api/history`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

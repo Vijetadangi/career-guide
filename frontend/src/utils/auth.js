@@ -1,5 +1,5 @@
-// ✅ Backend base URL (PRODUCTION)
-export const BASE_URL = "https://career-guide-backend-tdg.onrender.com";
+// ✅ Backend base URL (Dynamic)
+export const BASE_URL = process.env.REACT_APP_API_URL || "https://career-guide-backend-tdqq.onrender.com";
 
 // ================= EXISTING CODE (UNCHANGED) =================
 

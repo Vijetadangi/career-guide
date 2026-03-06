@@ -1,3 +1,4 @@
+import { BASE_URL } from "../utils/auth";
 import "./ResumeBuilder.css";
 import { useState, useEffect, useRef, useMemo } from "react";
 import html2pdf from "html2pdf.js";
@@ -67,7 +68,7 @@ const ResumeBuilder = () => {
 
     try {
       const res = await fetch(
-        "https://career-guide-backend-tdg.onrender.com/api/resumes",
+        `${BASE_URL}/api/resumes`,
         {
           method: "POST",
           headers: {

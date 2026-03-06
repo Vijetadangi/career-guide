@@ -6,9 +6,15 @@ const path = require("path");
 
 dotenv.config();
 
+if (!process.env.JWT_SECRET) {
+  console.error("❌ ERROR: JWT_SECRET is not defined in environment variables!");
+  process.exit(1);
+}
+
 const app = express();
 
 /* ================= MIDDLEWARE ================= */
+
 app.use(
   cors({
     origin: [
@@ -27,6 +33,7 @@ app.options("*", cors());
 
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
+
 
 /* ================= DATABASE ================= */
 connectDB();

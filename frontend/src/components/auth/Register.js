@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
+import { BASE_URL } from "../../utils/auth";
 
 /* 🔐 Password strength helper */
 const getPasswordStrength = (password) => {
@@ -36,20 +37,19 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch(
-        "https://career-guide-backend-tdgq.onrender.com/api/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        }
-      );
+
+      const res = await fetch(`${BASE_URL}/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
+
 
       const data = await res.json();
 
