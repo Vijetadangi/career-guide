@@ -36,7 +36,9 @@ app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
 
 /* ================= DATABASE ================= */
+console.log("📡 Attempting to connect to MongoDB...");
 connectDB();
+console.log("✅ Server initialization complete (database connection status logged above)");
 
 /* ================= ROUTES ================= */
 app.use("/api/auth", require("./routes/authRoutes"));
