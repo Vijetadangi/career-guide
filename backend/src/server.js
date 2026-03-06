@@ -34,8 +34,8 @@ app.use(
   })
 );
 
-// Handle preflight requests
-app.options("*", cors());
+// Handle preflight requests (Express v5 does not support '*' wildcard)
+// Preflight is handled by main CORS middleware above
 
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
