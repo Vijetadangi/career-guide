@@ -50,13 +50,12 @@ const Register = () => {
         }),
       });
 
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.message || `Server error: ${res.status}`);
+      }
 
       const data = await res.json();
-
-      if (!res.ok) {
-        alert(data.message || "Registration failed");
-        return;
-      }
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
@@ -65,11 +64,10 @@ const Register = () => {
       navigate("/dashboard");
     } catch (error) {
       console.error("❌ REGISTER ERROR:", error);
-      console.error("Error details:", {
-        message: error.message,
-        baseUrl: BASE_URL
-      });
-      alert(error.message || "Server error. Please try again.");
+      console.error("Backend URL:", BASE_URL);
+      console.error("Error type:", error.name);
+      const errorMsg = error.message || "Server error. Please try again.";
+      alert(errorMsg);
     }
   };
 

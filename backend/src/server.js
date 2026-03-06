@@ -6,8 +6,12 @@ const path = require("path");
 
 dotenv.config();
 
-if (!process.env.JWT_SECRET) {
-  console.error("❌ ERROR: JWT_SECRET is not defined in environment variables!");
+// Check critical env vars
+const requiredEnvVars = ["JWT_SECRET"];
+const missingVars = requiredEnvVars.filter(v => !process.env[v]);
+
+if (missingVars.length > 0) {
+  console.error("❌ MISSING ENV VARS:", missingVars);
   process.exit(1);
 }
 
@@ -15,6 +19,7 @@ const app = express();
 
 /* ================= MIDDLEWARE ================= */
 
+// Enable CORS with proper origin handling
 app.use(
   cors({
     origin: [
@@ -29,16 +34,24 @@ app.use(
   })
 );
 
+// Handle preflight requests
 app.options("*", cors());
 
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ limit: "2mb", extended: true }));
 
+/* ================= HEALTH CHECK ================= */
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "API is running 🚀", timestamp: new Date() });
+});
 
-/* ================= DATABASE ================= */
-console.log("📡 Attempting to connect to MongoDB...");
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "healthy" });
+});
+
+/* ================= DATABASE CONNECTION ================= */
+console.log("📡 Connecting to MongoDB...");
 connectDB();
-console.log("✅ Server initialization complete (database connection status logged above)");
 
 /* ================= ROUTES ================= */
 app.use("/api/auth", require("./routes/authRoutes"));
@@ -47,14 +60,16 @@ app.use("/api/history", require("./routes/historyRoutes"));
 app.use("/api/resumes", require("./routes/resumeRoutes"));
 app.use("/api/contact", require("./routes/contactRoutes"));
 
-/* ================= HEALTH CHECK ================= */
-app.get("/", (req, res) => {
-  res.send("API is running 🚀");
+/* ================= ERROR HANDLING ================= */
+app.use((req, res) => {
+  console.log(`404 - Not Found: ${req.method} ${req.path}`);
+  res.status(404).json({ message: "Route not found" });
 });
 
 /* ================= START SERVER ================= */
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
-  console.log(`🚀 Backend running on port ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`✅ 🚀 Backend running on port ${PORT}`);
+  console.log(`   Base URL: http://localhost:${PORT}`);
 });
