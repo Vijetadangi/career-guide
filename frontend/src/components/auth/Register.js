@@ -64,8 +64,12 @@ const Register = () => {
       alert("Account created successfully 🎉");
       navigate("/dashboard");
     } catch (error) {
-      console.error("REGISTER ERROR:", error);
-      alert("Server error. Please try again.");
+      console.error("❌ REGISTER ERROR:", error);
+      console.error("Error details:", {
+        message: error.message,
+        baseUrl: BASE_URL
+      });
+      alert(error.message || "Server error. Please try again.");
     }
   };
 
