@@ -1,5 +1,5 @@
 // ✅ Backend base URL (Dynamic)
-export const BASE_URL = process.env.REACT_APP_API_URL || "https://career-guide-backend-tdqq.onrender.com";
+export const BASE_URL = process.env.REACT_APP_API_URL || "https://career-guide-backend-tdgq.onrender.com";
 
 // ================= EXISTING CODE (UNCHANGED) =================
 
