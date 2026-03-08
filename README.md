@@ -5,13 +5,21 @@ Choosing the right career path can often be confusing for students due to lack o
 🧠 What the platform does
 
 ✅ Conducts interactive skill assessment tests
+
 ✅ Evaluates user performance through automated skill analysis
+
 ✅ Categorizes strengths across multiple technical skill areas
+
 ✅ Generates personalized learning plans based on weak areas
+
 ✅ Provides career prediction recommendations based on user skills and interests
+
 ✅ Displays skill breakdown and performance insights through data visualization
+
 ✅ Generates downloadable skill assessment reports
+
 ✅ Tracks user career progress through structured stages
+
 ✅ Implements secure authentication and user session management
 
 Instead of relying on scattered online resources, CareerGuide integrates skill evaluation, career analysis, and learning guidance into one structured platform, helping students make informed career decisions.
